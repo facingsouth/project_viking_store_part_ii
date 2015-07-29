@@ -1,0 +1,16 @@
+<%= form_for @address do |f| %>
+  <%= f.label :owner_id %>
+  <%= @user.id %><br>
+  <%= f.label :owner_name %>
+  <%= @user.first_name %><%= @user.last_name %><br>
+  <%= f.label :street_address%>
+  <%= f.text_field :street_address %><br>
+  <%= f.label :city %>
+  <%= collection_select(:address, :city_id, @cities, :id, :name) %><br>
+  <%= collection_select(:address, :state_id, @states, :id, :name) %><br>
+  <%= f.label :zip_code%>
+  <%= f.text_field :zip_code %><br>
+  <% @user.id = :user_id %>
+  <%= f.hidden_field :user_id %>
+  <%= f.submit "Update Address" %>
+<% end %>

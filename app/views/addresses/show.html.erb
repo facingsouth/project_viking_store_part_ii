@@ -1,0 +1,21 @@
+<h1>Address</h1>
+
+<div class="row">
+  <div class="col-md-3">
+    <p>Owner ID</p>
+    <p>Owner Name</p><br><br>
+    <p>Street</p>
+    <p>City</p>
+    <p>State</p>
+    <!-- <p>ZIP</p> -->
+    <p><%= link_to "Edit Address", edit_address_path(@address) %></p>
+    <p><%= link_to "Delete Address", address_path(@address), method: 'delete' %></p>
+  </div>
+  <div class="col-md-9">
+    <p><%= @address.user.id %></p>
+    <p><%= @address.user.first_name %></p><br><br>
+    <p><%= @address.street_address %></p>
+    <p><%= @address.city.name %></p>
+    <p><%= @address.state.name %></p>
+  </div>
+</div>
