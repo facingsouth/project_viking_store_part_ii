@@ -10,7 +10,6 @@
   <%= collection_select(:address, :state_id, @states, :id, :name) %><br>
   <%= f.label :zip_code%>
   <%= f.text_field :zip_code %><br>
-  <% @user.id = :user_id %>
-  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :user_id, value: "#{@user.id}" %>
   <%= f.submit "Update Address" %>
 <% end %>

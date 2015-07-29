@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @addresses = Address.all
   end
 
-<<<<<<< HEAD
+
   def create
     @user = User.new(params_hash)
     @user.billing_id = 1
@@ -55,18 +55,7 @@ class UsersController < ApplicationController
     @addresses = Address.all
   end
 
-  def create
-    @user = User.new(params_hash)
-    @user.billing_id = 1
-    @user.shipping_id = 2
-    if @user.save
-      flash[:success] = "Successfully Create New User"
-      redirect_to users_path
-    else
-      flash.now[:error] = "Failed to create new user"
-      render :new
-    end
-  end
+
 
 
 

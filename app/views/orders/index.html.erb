@@ -28,21 +28,36 @@
             <% @orders.each do |order| %>
               <tr>
                 <td><%= order.id %></td>
+                <td>
+                    <%= link_to order.user_id, user_path(order.user_id) %>
+                </td>
+                <td>
+                  <%= order.user.default_shipping_address_id.street_address %>
+                </td>
+                <td>
+                  <%= order.user.default_shipping_address_id.city.name %>
+                </td>
+                <td>
+                  <%= order.user.default_shipping_address_id.state.name %>
+                </td>
+                <td>
+                  <%= order.total %>
+                </td>
+                
                   <% if order.checkout_date %>
+                    <td>PLACED</td>
                     <td><%= order.checkout_date.strftime("%m-%d-%y")    %>
                     </td>
-                    <td>PLACED</td>
+                    
                   <% else %>
-                    <td><%= order.created_at.strftime("%m-%d-%y")    %>
-                    </td>
                     <td>
                       <span class="text-danger">
                         UNPLACED
                       </span>
                     </td>
+                    <td><%= order.created_at.strftime("%m-%d-%y")    %>
+                    </td>
                   <% end %>
-                  <td>
-                    <%= order.total %></td>
                   <td>
                     <%= link_to "Show", class: "btn btn-xs btn-primary"%>
                   </td>

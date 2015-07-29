@@ -16,12 +16,15 @@ class AddressesController < ApplicationController
 
     @states = State.all
     @cities = City.all
-    @user = User.find(params[:id])
-    @address.user_id = @user.id
+    @user = User.find(params[:user_id])
+    # @address.user_id = @user.id
+    # @user = User.find(@address.user_id)
   end
 
   def create
+
     @address = Address.new(params_hash)
+    # @address.user_id = params[:user_id] 
     if @address.save
       flash[:success] = "Successfully Created New Address"
       redirect_to addresses_path({id: @address.user.id})
