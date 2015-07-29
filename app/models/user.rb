@@ -1,22 +1,24 @@
 class User < ActiveRecord::Base
-has_many :addresses, :dependent => :destroy
-belongs_to :default_shipping_address_id, :class_name => "Address",
-                              :foreign_key => "shipping_id"
-belongs_to :default_billing_address_id, :class_name => "Address",
-                              :foreign_key => "billing_id"
+  has_many :addresses, :dependent => :destroy
+  belongs_to :default_shipping_address_id, :class_name => "Address",
+                                :foreign_key => "shipping_id"
+  belongs_to :default_billing_address_id, :class_name => "Address",
+                                :foreign_key => "billing_id"
 
-has_one :credit_card, :dependent => :destroy
+  has_one :credit_card, :dependent => :destroy
 
-has_many :orders
+  has_many :orders
 
-validates :first_name, :last_name, :email,
-          :presence => { :message => "Can not be blank"}
+  validates :first_name, :last_name, :email,
+            :presence => { :message => "Can not be blank"}
 
-validates :email,
-          :uniqueness => {:message => "Email already exits"}
+  validates :email,
+            :uniqueness => {:message => "Email already exits"}
 
  
-
+  def full_name
+    "#{first_name} #{last_name}"
+  end       
 
   def self.in_last(days = nil)
     if days.nil?

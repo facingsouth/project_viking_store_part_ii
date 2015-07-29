@@ -3,10 +3,22 @@ class Order < ActiveRecord::Base
   has_many :products, :through => :order_contents
   belongs_to :user
   
+  belongs_to :order_shipping_address, :class_name => "Address",
+                                :foreign_key => "shipping_id"
+  belongs_to :order_billing_address, :class_name => "Address",
+                                :foreign_key => "billing_id"
 
 
   def total
     products.sum("price * quantity")
+  end
+
+  def num_of_products
+    order_contents.sum(:quantity)
+  end
+
+  def status
+    checkout_date.nil? ? "UNPLACED" : "PLACEDp"
   end
   
   def self.time_series_day(days=7)

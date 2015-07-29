@@ -1,0 +1,42 @@
+<h1>Order <%= @order.id %></h1>
+
+<div class="row">
+  <h2>Logistical Information</h2>
+  <h4>Basic Information</h4> 
+
+  <h5>Customer ID:  <span class="text-info"><%= @order.user_id %></span></h5>
+
+  <h5>Customer:  <span class="text-info"><%= link_to @order.user.full_name, user_path(@order.user_id) %> </span> </h5>
+
+  <h5>Email:  <span class="text-info"><%= @order.user.email %> </span></h5>
+
+  <h5>Date Placed:  <span class="text-info"><%= @order.created_at.to_date %></span></h5>
+  <h5>Num of Products:  <span class="text-info"><%= @order.num_of_products %></span></h5>
+  <h5>Order Value:  <span class="text-info"><%= @order.total %></span></h5>
+  <h5><span class="text-info"><%= link_to "Edit Customer Profile", edit_user_path(@order.user_id) %></span></h5>
+</div>
+
+<div class="row">
+  <h4>Order Status</h4>
+  <h5><span class="text-info"><%= @order.status %></span></h5>
+</div>
+
+<div class="row">
+  <h4>Shipping Address</h4>
+  <h5>Street <span class="text-info"><%= @order.order_shipping_address.street_address %></span></h5>
+  <h5>City <span class="text-info"><%= @order.order_shipping_address.city.name %></span></h5>
+  <h5>State <span class="text-info"><%= @order.order_shipping_address.state.name %></span></h5>
+</div>
+
+<div class="row">
+  <h4>Billing Address</h4>
+  <h5>Street <span class="text-info"><%= @order.order_billing_address.street_address %></span></h5>
+  <h5>City <span class="text-info"><%= @order.order_billing_address.city.name %></span></h5>
+  <h5>State <span class="text-info"><%= @order.order_billing_address.state.name %></span></h5>
+</div>
+
+<div class="row">
+  <h4>Billing Card</h4>
+  <h5>Last 4 Digits <span class="text-info"><%= @order.user.credit_card.card_number %></span></h5>
+</div>
+
