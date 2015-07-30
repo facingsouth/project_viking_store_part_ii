@@ -29,8 +29,8 @@
 <%= link_to "View Saved Addresses",addresses_path(:id => @user.id), class: 'btn btn-xs btn-primary' %><br>
 
 
-
-<%= link_to "View Unplaced Order(cart)", user_unplaced_path, class: 'btn btn-xs btn-primary' %>
+<%= link_to "View Placed Orders", orders_path(user_id: @user.id), class: 'btn btn-xs btn-primary' %> <br>
+<%= link_to "View Unplaced Order(cart)", "#", class: 'btn btn-xs btn-primary' %>
 
 <br>
 
