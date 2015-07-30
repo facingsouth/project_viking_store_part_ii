@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def cart
+    orders.where("checkout_date IS NULL")
+  end
+
   def self.in_last(days = nil)
     if days.nil?
       self.count

@@ -7,6 +7,8 @@ class Address < ActiveRecord::Base
   belongs_to :city
   belongs_to :state
 
-
+  def full_address
+    "#{street_address}, #{city.name}, #{state.name}, #{zip_code}"
+  end
 
 end
