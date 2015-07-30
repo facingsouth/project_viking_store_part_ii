@@ -6,7 +6,7 @@
 
   <h5>Customer ID:  <span class="text-info"><%= @order.user_id %></span></h5>
 
-  <h5>Customer:  <span class="text-info"><%= link_to @order.user.full_name, user_path(@order.user_id) %> </span> </h5>
+  <h5>Customer:  <span class="text-info"><%= link_to @order.user.user_full_name, user_path(@order.user_id) %> </span> </h5>
 
   <h5>Email:  <span class="text-info"><%= @order.user.email %> </span></h5>
 
@@ -40,3 +40,8 @@
   <h5>Last 4 Digits <span class="text-info"><%= @order.user.credit_card.card_number %></span></h5>
 </div>
 
+<%= link_to "Edit", edit_order_path(@order) ,class: 'btn btn-xs btn-primary'%></td>
+<%= link_to "Delete", orders_path, method: 'delete', :data => {confirm: 'Are you sure you want to delete?'}, class: 'btn btn-xs btn-danger' %>
+
+
+<br>

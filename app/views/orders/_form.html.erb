@@ -1,0 +1,12 @@
+
+
+<%= form_for @order do |f| %>
+<%= f.label :shipping_id %>
+<%= f.collection_select( :shipping_id, @order.user.addresses, :id, :street_address) %>
+<br>
+<%= f.label :billing_id %>
+<%= f.collection_select( :billing_id, @order.user.addresses, :id, :street_address) %>
+<br>
+
+<% end %>
+

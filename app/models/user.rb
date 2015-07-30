@@ -16,9 +16,9 @@ class User < ActiveRecord::Base
             :uniqueness => {:message => "Email already exits"}
 
  
-  def full_name
+  def users_full_name
     "#{first_name} #{last_name}"
-  end       
+  end
 
   def self.in_last(days = nil)
     if days.nil?
