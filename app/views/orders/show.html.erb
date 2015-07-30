@@ -1,20 +1,6 @@
 <h1>Order <%= @order.id %></h1>
 
-<div class="row">
-  <h2>Logistical Information</h2>
-  <h4>Basic Information</h4> 
-
-  <h5>Customer ID:  <span class="text-info"><%= @order.user_id %></span></h5>
-
-  <h5>Customer:  <span class="text-info"><%= link_to @order.user.user_full_name, user_path(@order.user_id) %> </span> </h5>
-
-  <h5>Email:  <span class="text-info"><%= @order.user.email %> </span></h5>
-
-  <h5>Date Placed:  <span class="text-info"><%= @order.created_at.to_date %></span></h5>
-  <h5>Num of Products:  <span class="text-info"><%= @order.num_of_products %></span></h5>
-  <h5>Order Value:  <span class="text-info"><%= @order.total %></span></h5>
-  <h5><span class="text-info"><%= link_to "Edit Customer Profile", edit_user_path(@order.user_id) %></span></h5>
-</div>
+<%= render 'orders/basic_info' %>
 
 <div class="row">
   <h4>Order Status</h4>
@@ -45,3 +31,38 @@
 
 
 <br>
+
+<div class="row">
+<h4>Order Contents</h4>
+<table class="table-bordered">
+  <tr>
+    <th>ProductID</th>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Total Price</th>
+  </tr>
+  <% @order.order_contents.each do |oc| %>
+    <tr>
+      <td><%= oc.product_id %></td>
+      <td><%= link_to oc.product.name, product_path(oc.product) %></td>
+      <td><%= oc.quantity %></td>
+      <td>$<%= oc.product.price %></td>
+      <td>$<%= oc.product_total_price %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+
+<%= link_to "Edit", edit_order_path(@order) ,class: 'btn btn-xs btn-primary'%></td>
+<%= link_to "Delete", orders_path, method: 'delete', :data => {confirm: 'Are you sure you want to delete?'}, class: 'btn btn-xs btn-danger' %>
+  
+</div>
+
+
+
+
+
+
+
+

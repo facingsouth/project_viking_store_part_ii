@@ -1,0 +1,17 @@
+<div class="row">
+  <h2>Logistical Information</h2>
+  <h4>Basic Information</h4> 
+
+  <h5>Customer ID:  <span class="text-info"><%= @user.id %></span></h5>
+
+  <h5>Customer:  <span class="text-info"><%= link_to @user.user_full_name, user_path(@user.id) %> </span> </h5>
+
+  <h5>Email:  <span class="text-info"><%= @user.email %> </span></h5>
+
+  <h5>Date Placed:  <span class="text-info"><%= @order.date_placed %></span></h5>
+  <% if @order.persisted? %>
+    <h5>Num of Products:  <span class="text-info"><%= @order.num_of_products %></span></h5>
+    <h5>Order Value:  <span class="text-info">$<%= @order.total %></span></h5>
+  <% end %>
+  <h5><span class="text-info"><%= link_to "Edit Customer Profile", edit_user_path(@user.id) %></span></h5>
+</div>

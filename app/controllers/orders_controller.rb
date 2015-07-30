@@ -4,6 +4,11 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
 
+  def new
+    @order = Order.new
+    @user = User.find(params[:user_id])
+  end
+
   def show
     @order = Order.find(params[:id])
   end
@@ -11,8 +16,8 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(whitelist_order_params)
     if @order.save
-      flash[:success] = "New order created"
-      redirect_to @category
+      flash[:success] = "Add products here and place you order."
+      redirect_to new_ordercontent_path, locals: {order_id: @order.id}
     else
       flash.now[:danger] = 'Order was not saved, and error has occured.'
       render :new

@@ -20,6 +20,10 @@ class Order < ActiveRecord::Base
   def status
     checkout_date.nil? ? "UNPLACED" : "PLACEDp"
   end
+
+  def date_placed
+    checkout_date.nil? ? "N/A" : checkout_date.to_date
+  end
   
   def self.time_series_day(days=7)
 

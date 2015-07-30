@@ -1,2 +1,4 @@
-<h1>Edit Order for <%= "#{@order.user.first_name} #{@order.user.last_name}" %></h1>
+<h1>Edit Order for <%= "#{@user.user_full_name}" %></h1>
+
+<%= render 'orders/basic_info' %>
 <%= render 'orders/form' %>

@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
             :uniqueness => {:message => "Email already exits"}
 
  
-  def users_full_name
+  def user_full_name
     "#{first_name} #{last_name}"
   end
 

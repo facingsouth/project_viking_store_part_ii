@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   resources :addresses
   resources :credit_cards
   resources :orders
+  resources :ordercontents
 end
 
